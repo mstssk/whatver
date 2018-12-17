@@ -1,8 +1,11 @@
 {
-  "name": "whatver",
+  "name": "@mstssk/whatver",
   "version": "0.0.0",
   "description": "What is the version of this command?",
-  "main": "index.js",
+  "main": "src/whatver.js",
+  "bin": {
+    "whatver": "./bin/whatver"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
