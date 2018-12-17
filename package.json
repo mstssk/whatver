@@ -1,0 +1,19 @@
+{
+  "name": "whatver",
+  "version": "0.0.0",
+  "description": "What is the version of this command?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstssk/whatver.git"
+  },
+  "author": "mstssk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mstssk/whatver/issues"
+  },
+  "homepage": "https://github.com/mstssk/whatver#readme"
+}
