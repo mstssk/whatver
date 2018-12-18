@@ -9,13 +9,22 @@ What is the version of this command?
 ```sh
 $ npm i -g @mstssk/whatver
 $ whatver git
+git version 2.19.1
 ```
 
 OR
 
 ```sh
 $ npx @mstssk/whatver git
+npx: installed 1 in 1.336s
+git version 2.19.1
 ```
+
+## Motivation
+
+There are many commands, and have options to show versions each other.
+However these options are not same and have many variations.
+We don't want to take care about "what a option is to show version for this command?"
 
 ## Version args repository
 
