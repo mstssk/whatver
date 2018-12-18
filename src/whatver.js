@@ -48,8 +48,7 @@ async function resolveVerArg(command) {
  */
 function resolveUrl(command) {
     const repo = DEFAULT_REPO;
-    const initial = command.charAt(0).toLowerCase();
-    return `${repo}/data/${initial}/${command}.json`;
+    return `${repo}/data/${command}.json`;
 }
 
 /**
