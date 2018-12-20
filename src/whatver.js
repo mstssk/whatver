@@ -1,5 +1,6 @@
 const https = require('https');
 const { spawn } = require('child_process');
+const { URL } = require('url');
 
 const DEFAULT_REPO = "https://raw.githubusercontent.com/mstssk/whatver-repo/master";
 
@@ -61,7 +62,7 @@ function httpsGet(url, command) {
         https.get(url, res => {
             if (res.statusCode != 200) {
                 if (res.statusCode === 404) {
-                    showContributionMessage(command);
+                    console.error(buildContributionMessage(command));
                 }
                 throw new Error(`${res.statusCode} : ${url}`);
             }
@@ -77,10 +78,16 @@ function httpsGet(url, command) {
 
 /**
  * @param {string} command
+ * @returns {string} message
  */
-function showContributionMessage(command) {
+function buildContributionMessage(command) {
+    const filename = `${command}.json`;
+    const url = new URL('https://github.com/mstssk/whatver-repo/new/master/data/');
+    url.pathname += filename;
+    url.searchParams.append('filename', filename);
+    url.searchParams.append('value', JSON.stringify({ verarg: '' }));
     const msg = `No entry for '${command}'. Please contribute to version args repository from below link:
-https://github.com/mstssk/whatver-repo/new/master/data/-?value={%22verarg%22:%22%22}&filename=${command}.json
+${url.toString()}
 `;
-    console.error(msg);
+    return msg;
 }
