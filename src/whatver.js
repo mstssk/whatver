@@ -18,9 +18,7 @@ if (process.argv.length < 3) {
 async function main(command) {
     command = sanitizeCommand(command);
     const verArg = await resolveVerArg(command);
-    const cmd = spawn(command, [verArg]);
-    cmd.stdout.on('data', data => console.log(data.toString('utf8').trim()));
-    cmd.stderr.on('data', data => console.error(data.toString('utf8').trim()));
+    const cmd = spawn(command, [verArg], { stdio: 'inherit' });
     cmd.on('close', code => process.exit(code));
 }
 
