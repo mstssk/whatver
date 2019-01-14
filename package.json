@@ -4,7 +4,8 @@
   "description": "What is the version of this command?",
   "main": "src/whatver.js",
   "bin": {
-    "whatver": "./bin/whatver"
+    "whatver": "./bin/whatver",
+    "wv": "./bin/whatver"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
