@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/mstssk/whatver/issues"
   },
-  "homepage": "https://github.com/mstssk/whatver#readme"
+  "homepage": "https://github.com/mstssk/whatver#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
