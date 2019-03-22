@@ -9,7 +9,9 @@ What is the version of this command?
 ```sh
 $ npm i -g @mstssk/whatver
 $ whatver git
-git version 2.19.1
+git version 2.21.0
+$ wv git # shorthand
+git version 2.21.0
 ```
 
 OR
