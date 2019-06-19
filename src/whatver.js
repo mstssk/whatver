@@ -56,7 +56,7 @@ function resolveUrl(command) {
  * @returns {Promise<string>} result
  */
 function httpsGet(url, command) {
-    return new Promise((resolve, rejetct) => {
+    return new Promise((resolve, reject) => {
         https.get(url, res => {
             if (res.statusCode != 200) {
                 if (res.statusCode === 404) {
@@ -69,7 +69,7 @@ function httpsGet(url, command) {
             res.on('data', chunk => result += chunk);
             res.on("end", () => resolve(result));
         }).on("error", e => {
-            rejetct(e);
+            reject(e);
         });
     })
 }
