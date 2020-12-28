@@ -2,6 +2,16 @@
   "name": "@mstssk/whatver",
   "version": "0.0.6",
   "description": "What is the version of this command?",
+  "homepage": "https://github.com/mstssk/whatver#readme",
+  "bugs": {
+    "url": "https://github.com/mstssk/whatver/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstssk/whatver.git"
+  },
+  "license": "MIT",
+  "author": "mstssk",
   "main": "src/whatver.js",
   "bin": {
     "whatver": "./bin/whatver",
@@ -10,16 +20,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mstssk/whatver.git"
-  },
-  "author": "mstssk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mstssk/whatver/issues"
-  },
-  "homepage": "https://github.com/mstssk/whatver#readme",
   "publishConfig": {
     "access": "public"
   }
