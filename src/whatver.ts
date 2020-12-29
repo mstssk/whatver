@@ -1,15 +1,18 @@
-import https from "https";
 import { spawn } from "child_process";
 import { URL } from "url";
+import fetch from "node-fetch";
 
 const DEFAULT_REPO =
   "https://raw.githubusercontent.com/mstssk/whatver-repo/master";
 
 if (process.argv[2]) {
-  main(process.argv[2]);
+  main(process.argv[2]).catch((reason) => {
+    console.error(reason.message);
+    process.exit(1);
+  });
 } else {
   console.error("missing <command>");
-  process.exit(2);
+  process.exit(1);
 }
 
 /**
@@ -17,8 +20,20 @@ if (process.argv[2]) {
  */
 async function main(command: string) {
   command = sanitizeCommand(command);
-  const verArg = await resolveVerArg(command);
-  const cmd = spawn(command, [verArg], { stdio: "inherit" });
+  const url = resolveUrl(command);
+  const res = await fetch(url);
+  if (!res.ok) {
+    if (res.status === 404) {
+      throw new Error(buildContributionMessage(command));
+    } else {
+      throw new Error(`${res.status} : ${url}`);
+    }
+  }
+  const { verarg } = await res.json();
+  if (!verarg) {
+    throw new Error("missing verarg");
+  }
+  const cmd = spawn(command, [verarg], { stdio: "inherit" });
   cmd.on("close", (code) => process.exit(code));
 }
 
@@ -28,59 +43,18 @@ function sanitizeCommand(command: string) {
 
 /**
  * @param {string} command
- * @returns {string} verArg
- */
-async function resolveVerArg(command: string) {
-  // TODO result cache
-  const url = resolveUrl(command);
-  const responseBody = await httpsGet(url, command);
-  const result = JSON.parse(responseBody);
-  if (!result["verarg"]) {
-    throw new Error("missing verarg");
-  }
-  return result["verarg"];
-}
-
-/**
- * @param {string} command
  * @returns {string} url
  */
-function resolveUrl(command: string) {
+function resolveUrl(command: string): string {
   const repo = DEFAULT_REPO;
   return `${repo}/data/${command}.json`;
-}
-
-/**
- * @param {string} url
- * @deprecated @param {string} command
- * @returns {Promise<string>} result
- */
-function httpsGet(url: string, command: string) {
-  return new Promise<string>((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        if (res.statusCode != 200) {
-          if (res.statusCode === 404) {
-            console.error(buildContributionMessage(command));
-          }
-          throw new Error(`${res.statusCode} : ${url}`);
-        }
-        let result = "";
-        res.setEncoding("utf8");
-        res.on("data", (chunk) => (result += chunk));
-        res.on("end", () => resolve(result));
-      })
-      .on("error", (e) => {
-        reject(e);
-      });
-  });
 }
 
 /**
  * @param {string} command
  * @returns {string} message
  */
-function buildContributionMessage(command: string) {
+function buildContributionMessage(command: string): string {
   const filename = `${command}.json`;
   const url = new URL(
     "https://github.com/mstssk/whatver-repo/new/master/data/"
