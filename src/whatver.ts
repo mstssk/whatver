@@ -38,7 +38,7 @@ async function main(command: string) {
 }
 
 function sanitizeCommand(command: string) {
-  return command; // FIXME
+  return command.trim().replace(/[^\w]/g, "");
 }
 
 /**
