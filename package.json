@@ -23,7 +23,9 @@
   "scripts": {
     "build": "tsc",
     "pretest": "npm run build",
-    "test": "node ./bin/whatver node"
+    "test": "node ./bin/whatver node",
+    "fmt": "npx prettier --write .",
+    "lint": "npx prettier --check ."
   },
   "dependencies": {
     "node-fetch": "^2.6.1"
