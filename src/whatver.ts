@@ -62,8 +62,6 @@ function buildContributionMessage(command: string): string {
   url.pathname += filename;
   url.searchParams.append("filename", filename);
   url.searchParams.append("value", JSON.stringify({ verarg: "" }));
-  const msg = `No entry for '${command}'. Please contribute to version args repository from below link:
-${url.toString()}
-`;
+  const msg = `No entry for '${command}'. Please contribute to version args repository from below link:\n${url.toString()}`;
   return msg;
 }
