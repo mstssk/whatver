@@ -1,5 +1,6 @@
 import https from "https";
 import { spawn } from "child_process";
+import { URL } from "url";
 
 const DEFAULT_REPO =
   "https://raw.githubusercontent.com/mstssk/whatver-repo/master";
