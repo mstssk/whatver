@@ -1,25 +1,40 @@
 {
   "name": "@mstssk/whatver",
-  "version": "0.0.6",
+  "version": "0.1.0-beta.0",
   "description": "What is the version of this command?",
-  "main": "src/whatver.js",
-  "bin": {
-    "whatver": "./bin/whatver",
-    "wv": "./bin/whatver"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "homepage": "https://github.com/mstssk/whatver#readme",
+  "bugs": {
+    "url": "https://github.com/mstssk/whatver/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mstssk/whatver.git"
   },
-  "author": "mstssk",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mstssk/whatver/issues"
+  "author": "mstssk",
+  "main": "lib/whatver.js",
+  "bin": {
+    "whatver": "./bin/whatver",
+    "wv": "./bin/whatver"
   },
-  "homepage": "https://github.com/mstssk/whatver#readme",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "pretest": "npm run build",
+    "test": "node ./bin/whatver node",
+    "fmt": "npx prettier --write .",
+    "lint": "npx prettier --check ."
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.16",
+    "@types/node-fetch": "^2.5.7",
+    "typescript": "^4.1.3"
+  },
   "publishConfig": {
     "access": "public"
   }
