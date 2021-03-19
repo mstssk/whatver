@@ -34,7 +34,7 @@ async function main(command: string) {
     throw new Error("missing verarg");
   }
   const cmd = spawn(command, [verarg], { stdio: "inherit" });
-  cmd.on("close", (code) => process.exit(code));
+  cmd.on("close", (code) => process.exit(code ?? undefined));
 }
 
 function sanitizeCommand(command: string) {
