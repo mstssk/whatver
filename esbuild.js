@@ -6,6 +6,7 @@ esbuild
     minify: true,
     platform: "node",
     outdir: "lib/",
+    target: ["node12"],
   })
   .catch((reason) => {
     console.error(reason);
