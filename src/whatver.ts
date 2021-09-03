@@ -29,7 +29,7 @@ async function main(command: string) {
       throw new Error(`${res.status} : ${url}`);
     }
   }
-  const { verarg } = await res.json();
+  const { verarg } = <{ verarg: string }>await res.json();
   if (!verarg) {
     throw new Error("missing verarg");
   }
