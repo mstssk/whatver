@@ -22,10 +22,10 @@
   ],
   "scripts": {
     "build": "tsc --noEmit && node esbuild.js",
-    "pretest": "npm run build",
-    "test": "node ./bin/whatver node",
     "fmt": "npx prettier --write .",
-    "lint": "npx prettier --check ."
+    "lint": "npx prettier --check .",
+    "pretest": "npm run build",
+    "test": "node ./bin/whatver node"
   },
   "dependencies": {},
   "devDependencies": {
