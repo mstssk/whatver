@@ -1,10 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>mstssk/renovate-config"],
-  "packageRules": [
-    {
-      "matchPackageNames": ["esbuild"],
-      "allowedVersions": "~0.12.0"
-    }
-  ]
+  "extends": ["github>mstssk/renovate-config"]
 }
