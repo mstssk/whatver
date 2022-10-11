@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 import { URL } from "url";
-import { request } from "undici";
+import { httpGet } from "./https";
 
 const DEFAULT_REPO =
   "https://raw.githubusercontent.com/mstssk/whatver-repo/master";
@@ -21,15 +21,15 @@ if (process.argv[2]) {
 async function main(command: string) {
   command = sanitizeCommand(command);
   const url = resolveUrl(command);
-  const res = await request(url);
-  if (res.statusCode !== 200) {
-    if (res.statusCode === 404) {
+  const res = await httpGet(url);
+  if (!res.ok) {
+    if (res.status === 404) {
       throw new Error(buildContributionMessage(command));
     } else {
-      throw new Error(`${res.statusCode} : ${url}`);
+      throw new Error(`${res.status} : ${url}`);
     }
   }
-  const { verarg } = <{ verarg: string }>await res.body.json();
+  const { verarg } = await res.json<{ verarg: string }>();
   if (!verarg) {
     throw new Error("missing verarg");
   }
