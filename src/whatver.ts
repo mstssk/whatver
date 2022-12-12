@@ -1,5 +1,5 @@
-import { spawn } from "child_process";
-import { URL } from "url";
+import { spawn } from "node:child_process";
+import { URL } from "node:url";
 import { httpGet } from "./https";
 
 const DEFAULT_REPO =

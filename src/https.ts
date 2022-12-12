@@ -1,4 +1,4 @@
-import { IncomingMessage } from "node:http";
+import type { IncomingMessage } from "node:http";
 import { get as nodeGet } from "node:https";
 
 export function httpGet(url: string) {
