@@ -31,7 +31,7 @@
     "@types/node": "^18.16.18",
     "esbuild": "^0.18.10",
     "typescript": "^5.1.6",
-    "undici": "^5.21.0"
+    "undici": "^5.22.1"
   },
   "publishConfig": {
     "access": "public"
