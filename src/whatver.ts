@@ -57,7 +57,7 @@ function resolveUrl(command: string): string {
 function buildContributionMessage(command: string): string {
   const filename = `${command}.json`;
   const url = new URL(
-    "https://github.com/mstssk/whatver-repo/new/master/data/"
+    "https://github.com/mstssk/whatver-repo/new/master/data/",
   );
   url.pathname += filename;
   url.searchParams.append("filename", filename);
