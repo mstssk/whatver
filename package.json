@@ -28,7 +28,7 @@
     "test": "node ./bin/whatver node"
   },
   "devDependencies": {
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.16.10",
     "esbuild": "^0.22.0",
     "typescript": "^5.5.2"
   },
