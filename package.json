@@ -28,9 +28,9 @@
     "test": "node ./bin/whatver node"
   },
   "devDependencies": {
-    "@types/node": "^20.16.10",
-    "esbuild": "^0.24.0",
-    "typescript": "^5.6.2"
+    "@types/node": "^20.17.10",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.2"
   },
   "publishConfig": {
     "access": "public"
