@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/node": "^22.18.7",
     "esbuild": "^0.25.10",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "publishConfig": {
     "access": "public"
