@@ -24,8 +24,7 @@
     "build": "tsc --noEmit && node esbuild.js",
     "fmt": "npx prettier --write .",
     "lint": "npx prettier --check .",
-    "pretest": "npm run build",
-    "test": "node ./bin/whatver node"
+    "test": "npm run build && node ./bin/whatver node"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
